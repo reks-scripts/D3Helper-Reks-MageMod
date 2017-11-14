@@ -182,8 +182,7 @@ namespace D3Helper.A_Enums
 
         public const string Kadala_MainPage = "Root.NormalLayer.shop_dialog_mainPage.shop_title";
         public const string BlackSmith_MainPage = "Root.NormalLayer.vendor_dialog_mainPage.salvage_dialog";
+        public const string Crafting_Mats_Button = "Root.NormalLayer.inventory_dialog_mainPage.crafting_mats_button";
 
-
-        
     }
 }

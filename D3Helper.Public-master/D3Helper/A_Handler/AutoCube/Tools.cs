@@ -201,6 +201,7 @@ namespace D3Helper.A_Handler.AutoCube
         {
             try
             {
+                RefreshMaterialsUI();
                 IEnumerable<UXControl> AllControls = UXHelper.Enumerate();                
 
                 int Count_RP = 0;
@@ -231,6 +232,7 @@ namespace D3Helper.A_Handler.AutoCube
         {
             try
             {
+                RefreshMaterialsUI();
                 IEnumerable<UXControl> AllControls = UXHelper.Enumerate();
 
                 int ConvertMaterialCost = 100;
@@ -264,8 +266,16 @@ namespace D3Helper.A_Handler.AutoCube
                 return 0;
             }
         }
-
-        private static void GetAllMaterialsUpgrade(IEnumerable<UXControl> AllControls, out int DBcount, out int RPcount, out int VCcount, out int ADcount)
+        private static void RefreshMaterialsUI()
+        {
+            A_Tools.InputSimulator.IS_Keyboard.Inventory();
+            Thread.Sleep(2*Properties.Settings.Default.MaxDelayClick);
+            A_Tools.T_D3UI.UIElement.leftClick(UIElements.Crafting_Mats_Button);
+            Thread.Sleep(Properties.Settings.Default.MaxDelayClick);
+            A_Tools.InputSimulator.IS_Keyboard.Close_AllWindows();
+            Thread.Sleep(Properties.Settings.Default.MaxDelayClick);
+        }
+            private static void GetAllMaterialsUpgrade(IEnumerable<UXControl> AllControls, out int DBcount, out int RPcount, out int VCcount, out int ADcount)
         {
             DBcount = 0;
             VCcount = 0;

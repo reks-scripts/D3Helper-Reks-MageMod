@@ -149,6 +149,9 @@ namespace D3Helper
             this.MaxDelayClick.Text = Properties.Settings.Default.MaxDelayClick.ToString();
             this.SleepTransmute.Text = Properties.Settings.Default.SleepTransmute.ToString();
 
+            this.AntiIdle.Checked = Properties.Settings.Default.AntiIdleBool;
+            this.AntiIdle_Timer.Text = Properties.Settings.Default.AntiIdle_Timer.ToString();
+
 
             //--------------------
 
@@ -1249,6 +1252,18 @@ namespace D3Helper
         private void SleepTransmute_TextChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.SleepTransmute = int.Parse(this.SleepTransmute.Text);
+            Properties.Settings.Default.Save();
+        }
+
+        private void AntiIdle_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.AntiIdleBool = this.AntiIdle.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void AntiIdle_Timer_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.AntiIdle_Timer= int.Parse(this.AntiIdle_Timer.Text);
             Properties.Settings.Default.Save();
         }
     }

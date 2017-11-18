@@ -119,6 +119,9 @@
             this.CB_AutoPick_Material = new System.Windows.Forms.CheckBox();
             this.CB_AutoPick_Gem = new System.Windows.Forms.CheckBox();
             this.page_AutoCube = new System.Windows.Forms.TabPage();
+            this.SleepTransmuteLabel = new System.Windows.Forms.Label();
+            this.SleepTransmute = new System.Windows.Forms.TextBox();
+            this.MaxDelayLabel = new System.Windows.Forms.Label();
             this.MinDelayLabel = new System.Windows.Forms.Label();
             this.MaxDelayClick = new System.Windows.Forms.TextBox();
             this.MinDelayClick = new System.Windows.Forms.TextBox();
@@ -131,9 +134,8 @@
             this.button_simplecast_remove = new System.Windows.Forms.Button();
             this.button_simplecast_add = new System.Windows.Forms.Button();
             this.dataGridView_simpleCast = new System.Windows.Forms.DataGridView();
-            this.MaxDelayLabel = new System.Windows.Forms.Label();
-            this.SleepTransmute = new System.Windows.Forms.TextBox();
-            this.SleepTransmuteLabel = new System.Windows.Forms.Label();
+            this.AntiIdle = new System.Windows.Forms.CheckBox();
+            this.AntiIdle_Timer = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.page_General.SuspendLayout();
             this.page_Hotkeys.SuspendLayout();
@@ -1131,6 +1133,8 @@
             // 
             // page_AutoCube
             // 
+            this.page_AutoCube.Controls.Add(this.AntiIdle_Timer);
+            this.page_AutoCube.Controls.Add(this.AntiIdle);
             this.page_AutoCube.Controls.Add(this.SleepTransmuteLabel);
             this.page_AutoCube.Controls.Add(this.SleepTransmute);
             this.page_AutoCube.Controls.Add(this.MaxDelayLabel);
@@ -1146,6 +1150,33 @@
             this.page_AutoCube.TabIndex = 14;
             this.page_AutoCube.Text = "AutoCube";
             this.page_AutoCube.UseVisualStyleBackColor = true;
+            // 
+            // SleepTransmuteLabel
+            // 
+            this.SleepTransmuteLabel.AutoSize = true;
+            this.SleepTransmuteLabel.Location = new System.Drawing.Point(65, 135);
+            this.SleepTransmuteLabel.Name = "SleepTransmuteLabel";
+            this.SleepTransmuteLabel.Size = new System.Drawing.Size(84, 13);
+            this.SleepTransmuteLabel.TabIndex = 45;
+            this.SleepTransmuteLabel.Text = "SleepTransmute";
+            // 
+            // SleepTransmute
+            // 
+            this.SleepTransmute.Location = new System.Drawing.Point(17, 135);
+            this.SleepTransmute.Name = "SleepTransmute";
+            this.SleepTransmute.Size = new System.Drawing.Size(42, 20);
+            this.SleepTransmute.TabIndex = 44;
+            this.SleepTransmute.TextChanged += new System.EventHandler(this.SleepTransmute_TextChanged);
+            // 
+            // MaxDelayLabel
+            // 
+            this.MaxDelayLabel.AutoSize = true;
+            this.MaxDelayLabel.Location = new System.Drawing.Point(65, 94);
+            this.MaxDelayLabel.Name = "MaxDelayLabel";
+            this.MaxDelayLabel.Size = new System.Drawing.Size(77, 13);
+            this.MaxDelayLabel.TabIndex = 43;
+            this.MaxDelayLabel.Text = "MaxDelayClick";
+            this.MaxDelayLabel.Click += new System.EventHandler(this.MaxDelayLabel_Click);
             // 
             // MinDelayLabel
             // 
@@ -1273,32 +1304,24 @@
             this.dataGridView_simpleCast.TabIndex = 0;
             this.dataGridView_simpleCast.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_simpleCast_CellContentClick);
             // 
-            // MaxDelayLabel
+            // AntiIdle
             // 
-            this.MaxDelayLabel.AutoSize = true;
-            this.MaxDelayLabel.Location = new System.Drawing.Point(65, 94);
-            this.MaxDelayLabel.Name = "MaxDelayLabel";
-            this.MaxDelayLabel.Size = new System.Drawing.Size(77, 13);
-            this.MaxDelayLabel.TabIndex = 43;
-            this.MaxDelayLabel.Text = "MaxDelayClick";
-            this.MaxDelayLabel.Click += new System.EventHandler(this.MaxDelayLabel_Click);
+            this.AntiIdle.AutoSize = true;
+            this.AntiIdle.Location = new System.Drawing.Point(68, 206);
+            this.AntiIdle.Name = "AntiIdle";
+            this.AntiIdle.Size = new System.Drawing.Size(113, 17);
+            this.AntiIdle.TabIndex = 46;
+            this.AntiIdle.Text = "Anti-Idle (seconds)";
+            this.AntiIdle.UseVisualStyleBackColor = true;
+            this.AntiIdle.CheckedChanged += new System.EventHandler(this.AntiIdle_CheckedChanged);
             // 
-            // SleepTransmute
+            // AntiIdle_Timer
             // 
-            this.SleepTransmute.Location = new System.Drawing.Point(17, 135);
-            this.SleepTransmute.Name = "SleepTransmute";
-            this.SleepTransmute.Size = new System.Drawing.Size(42, 20);
-            this.SleepTransmute.TabIndex = 44;
-            this.SleepTransmute.TextChanged += new System.EventHandler(this.SleepTransmute_TextChanged);
-            // 
-            // SleepTransmuteLabel
-            // 
-            this.SleepTransmuteLabel.AutoSize = true;
-            this.SleepTransmuteLabel.Location = new System.Drawing.Point(65, 135);
-            this.SleepTransmuteLabel.Name = "SleepTransmuteLabel";
-            this.SleepTransmuteLabel.Size = new System.Drawing.Size(84, 13);
-            this.SleepTransmuteLabel.TabIndex = 45;
-            this.SleepTransmuteLabel.Text = "SleepTransmute";
+            this.AntiIdle_Timer.Location = new System.Drawing.Point(17, 204);
+            this.AntiIdle_Timer.Name = "AntiIdle_Timer";
+            this.AntiIdle_Timer.Size = new System.Drawing.Size(42, 20);
+            this.AntiIdle_Timer.TabIndex = 47;
+            this.AntiIdle_Timer.TextChanged += new System.EventHandler(this.AntiIdle_Timer_TextChanged);
             // 
             // Window_Settings
             // 
@@ -1441,5 +1464,7 @@
         private System.Windows.Forms.Label MaxDelayLabel;
         private System.Windows.Forms.Label SleepTransmuteLabel;
         private System.Windows.Forms.TextBox SleepTransmute;
+        private System.Windows.Forms.TextBox AntiIdle_Timer;
+        private System.Windows.Forms.CheckBox AntiIdle;
     }
 }

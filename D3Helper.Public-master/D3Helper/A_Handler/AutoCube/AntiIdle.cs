@@ -21,6 +21,7 @@ namespace D3Helper.A_Handler.AutoCube
         public bool isInGame { get { return A_Collection.Me.HeroStates.isInGame; } }
         public bool isAlive { get { return A_Collection.Me.HeroStates.isAlive; } }
         public bool isTeleporting { get { return A_Collection.Me.HeroStates.isTeleporting; } }
+        public bool isUrshiNearby { get { ActorCommonData UrshiActor;  return Tools.IsUrshiNearby(out UrshiActor); } }
         public ActorCommonData LocalACD { get { return A_Collection.Me.HeroGlobals.LocalACD; } }
         public double posX { get { return LocalACD.x0D0_WorldPosX; } }
         public double posY { get { return LocalACD.x0D4_WorldPosY; } }
@@ -33,12 +34,12 @@ namespace D3Helper.A_Handler.AutoCube
             {
                 if (enabled & !isInTown & isInGame)
                 {
-                    double lastPosXroof = posX * 1.05;
-                    double lastPosXfloor = posX * 0.95;
-                    double lastPosYroof = posY * 1.05;
-                    double lastPosYfloor = posY * 0.95;
-                    double lastPosZroof = posZ * 1.05;
-                    double lastPosZfloor = posZ * 0.95;
+                    double lastPosXroof = posX * 1.02;
+                    double lastPosXfloor = posX * 0.98;
+                    double lastPosYroof = posY * 1.02;
+                    double lastPosYfloor = posY * 0.98;
+                    double lastPosZroof = posZ * 1.02;
+                    double lastPosZfloor = posZ * 0.98;
 
                     bool moved = false;
 
@@ -64,7 +65,7 @@ namespace D3Helper.A_Handler.AutoCube
                         }
                     }
                     threadTimer.Reset();
-                    if (!moved & isInGame & !isInTown & !isTeleporting & isAlive)
+                    if (!moved & isInGame & !isInTown & !isTeleporting & isAlive & !isUrshiNearby)
                     {
                         uint middleScreenX = (uint)A_Collection.D3Client.Window.D3ClientRect.Width / 2;
                         uint middleScreenY = (uint)A_Collection.D3Client.Window.D3ClientRect.Height / 2;

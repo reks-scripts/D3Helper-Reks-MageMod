@@ -19,6 +19,8 @@ namespace D3Helper.A_Handler.AutoCube
         public int timer_ms { get { return Properties.Settings.Default.AntiIdle_Timer * 1000; } }        
         public bool isInTown { get { return A_Collection.Me.HeroStates.isInTown;  } }
         public bool isInGame { get { return A_Collection.Me.HeroStates.isInGame; } }
+        public bool isAlive { get { return A_Collection.Me.HeroStates.isAlive; } }
+        public bool isTeleporting { get { return A_Collection.Me.HeroStates.isTeleporting; } }
         public ActorCommonData LocalACD { get { return A_Collection.Me.HeroGlobals.LocalACD; } }
         public double posX { get { return LocalACD.x0D0_WorldPosX; } }
         public double posY { get { return LocalACD.x0D4_WorldPosY; } }
@@ -48,18 +50,21 @@ namespace D3Helper.A_Handler.AutoCube
                         if (posX < lastPosXfloor | posX > lastPosXroof)
                         {
                             moved = true;
+                            break;
                         }
                         if (posY < lastPosYfloor | posY > lastPosYroof)
                         {
                             moved = true;
+                            break;
                         }
                         if (posZ < lastPosZfloor | posZ > lastPosZroof)
                         {
                             moved = true;
+                            break;
                         }
                     }
                     threadTimer.Reset();
-                    if (!moved)
+                    if (!moved & isInGame & !isInTown & !isTeleporting & isAlive)
                     {
                         uint middleScreenX = (uint)A_Collection.D3Client.Window.D3ClientRect.Width / 2;
                         uint middleScreenY = (uint)A_Collection.D3Client.Window.D3ClientRect.Height / 2;

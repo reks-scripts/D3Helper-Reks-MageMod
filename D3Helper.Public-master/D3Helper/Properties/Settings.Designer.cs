@@ -275,6 +275,20 @@ namespace D3Helper.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowItemQualityBool
+        {
+            get
+            {
+                return ((bool)(this["ShowItemQualityBool"]));
+            }
+            set
+            {
+                this["ShowItemQualityBool"] = value;
+            }
+        }
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("200")]
         public int MinDelayClick
         {

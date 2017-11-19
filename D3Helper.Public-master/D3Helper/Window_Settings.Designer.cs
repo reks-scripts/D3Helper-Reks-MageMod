@@ -119,6 +119,8 @@
             this.CB_AutoPick_Material = new System.Windows.Forms.CheckBox();
             this.CB_AutoPick_Gem = new System.Windows.Forms.CheckBox();
             this.page_AutoCube = new System.Windows.Forms.TabPage();
+            this.AntiIdle_Timer = new System.Windows.Forms.TextBox();
+            this.AntiIdle = new System.Windows.Forms.CheckBox();
             this.SleepTransmuteLabel = new System.Windows.Forms.Label();
             this.SleepTransmute = new System.Windows.Forms.TextBox();
             this.MaxDelayLabel = new System.Windows.Forms.Label();
@@ -134,8 +136,7 @@
             this.button_simplecast_remove = new System.Windows.Forms.Button();
             this.button_simplecast_add = new System.Windows.Forms.Button();
             this.dataGridView_simpleCast = new System.Windows.Forms.DataGridView();
-            this.AntiIdle = new System.Windows.Forms.CheckBox();
-            this.AntiIdle_Timer = new System.Windows.Forms.TextBox();
+            this.ShowItemQuality = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.page_General.SuspendLayout();
             this.page_Hotkeys.SuspendLayout();
@@ -721,6 +722,7 @@
             this.page_Overlay.BackColor = System.Drawing.SystemColors.Control;
             this.page_Overlay.BackgroundImage = global::D3Helper.Properties.Resources.Background_Monk_50_Settings;
             this.page_Overlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.page_Overlay.Controls.Add(this.ShowItemQuality);
             this.page_Overlay.Controls.Add(this.listBox_ui_elements);
             this.page_Overlay.Controls.Add(this.button_get_ui_elements);
             this.page_Overlay.Controls.Add(this.textBox_filter_ui_elemets_listbox);
@@ -1151,6 +1153,25 @@
             this.page_AutoCube.Text = "AutoCube";
             this.page_AutoCube.UseVisualStyleBackColor = true;
             // 
+            // AntiIdle_Timer
+            // 
+            this.AntiIdle_Timer.Location = new System.Drawing.Point(17, 204);
+            this.AntiIdle_Timer.Name = "AntiIdle_Timer";
+            this.AntiIdle_Timer.Size = new System.Drawing.Size(42, 20);
+            this.AntiIdle_Timer.TabIndex = 47;
+            this.AntiIdle_Timer.TextChanged += new System.EventHandler(this.AntiIdle_Timer_TextChanged);
+            // 
+            // AntiIdle
+            // 
+            this.AntiIdle.AutoSize = true;
+            this.AntiIdle.Location = new System.Drawing.Point(68, 206);
+            this.AntiIdle.Name = "AntiIdle";
+            this.AntiIdle.Size = new System.Drawing.Size(113, 17);
+            this.AntiIdle.TabIndex = 46;
+            this.AntiIdle.Text = "Anti-Idle (seconds)";
+            this.AntiIdle.UseVisualStyleBackColor = true;
+            this.AntiIdle.CheckedChanged += new System.EventHandler(this.AntiIdle_CheckedChanged);
+            // 
             // SleepTransmuteLabel
             // 
             this.SleepTransmuteLabel.AutoSize = true;
@@ -1304,24 +1325,17 @@
             this.dataGridView_simpleCast.TabIndex = 0;
             this.dataGridView_simpleCast.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_simpleCast_CellContentClick);
             // 
-            // AntiIdle
+            // ShowItemQuality
             // 
-            this.AntiIdle.AutoSize = true;
-            this.AntiIdle.Location = new System.Drawing.Point(68, 206);
-            this.AntiIdle.Name = "AntiIdle";
-            this.AntiIdle.Size = new System.Drawing.Size(113, 17);
-            this.AntiIdle.TabIndex = 46;
-            this.AntiIdle.Text = "Anti-Idle (seconds)";
-            this.AntiIdle.UseVisualStyleBackColor = true;
-            this.AntiIdle.CheckedChanged += new System.EventHandler(this.AntiIdle_CheckedChanged);
-            // 
-            // AntiIdle_Timer
-            // 
-            this.AntiIdle_Timer.Location = new System.Drawing.Point(17, 204);
-            this.AntiIdle_Timer.Name = "AntiIdle_Timer";
-            this.AntiIdle_Timer.Size = new System.Drawing.Size(42, 20);
-            this.AntiIdle_Timer.TabIndex = 47;
-            this.AntiIdle_Timer.TextChanged += new System.EventHandler(this.AntiIdle_Timer_TextChanged);
+            this.ShowItemQuality.AutoSize = true;
+            this.ShowItemQuality.BackColor = System.Drawing.Color.Transparent;
+            this.ShowItemQuality.Location = new System.Drawing.Point(6, 181);
+            this.ShowItemQuality.Name = "ShowItemQuality";
+            this.ShowItemQuality.Size = new System.Drawing.Size(190, 17);
+            this.ShowItemQuality.TabIndex = 44;
+            this.ShowItemQuality.Text = "Show Item Quality (Ancient, Primal)";
+            this.ShowItemQuality.UseVisualStyleBackColor = false;
+            this.ShowItemQuality.CheckedChanged += new System.EventHandler(this.ShowItemQuality_CheckedChanged);
             // 
             // Window_Settings
             // 
@@ -1466,5 +1480,6 @@
         private System.Windows.Forms.TextBox SleepTransmute;
         private System.Windows.Forms.TextBox AntiIdle_Timer;
         private System.Windows.Forms.CheckBox AntiIdle;
+        private System.Windows.Forms.CheckBox ShowItemQuality;
     }
 }

@@ -31,21 +31,25 @@ namespace D3Helper.A_Handler.AutoCube
             checkKadala = true;
             while (true)
             {
-                int sleepWait = 200;
-                if (!visitedKadala)
+                try
                 {
-                    sleepWait = 800;
+                    int sleepWait = 200;
+                    if (!visitedKadala)
+                    {
+                        sleepWait = 800;
+                    }
+                    else
+                    {
+                        sleepWait = 80;
+                    }
+                    if (!isInTown)
+                    {
+                        sleepWait = 6000;
+                    }
+                    checkUpgradeKadala();
+                    Thread.Sleep(sleepWait);
                 }
-                else
-                {
-                    sleepWait = 80;
-                }
-                if (!isInTown)
-                {
-                    sleepWait = 6000;
-                }
-                checkUpgradeKadala();
-                Thread.Sleep(sleepWait);
+                catch { }
             }
         }
 

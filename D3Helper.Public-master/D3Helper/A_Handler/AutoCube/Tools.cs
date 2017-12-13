@@ -18,6 +18,7 @@ namespace D3Helper.A_Handler.AutoCube
     class Tools
     {
         private const int KanaiCube_Stand = 439975;
+        private const int Urshi_ActorSNO = 398682;
 
         public static bool IsCubeNearby(out ActorCommonData CubeStand)
         {
@@ -34,6 +35,30 @@ namespace D3Helper.A_Handler.AutoCube
                 {
                     CubeStand = acd;
 
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static bool IsUrshiNearby(out ActorCommonData Urshi_Actor)
+        {
+            Urshi_Actor = new ActorCommonData();
+            try
+            {
+                List<ACD> AllActors;
+                lock (A_Collection.Environment.Actors.AllActors) AllActors = A_Collection.Environment.Actors.AllActors;
+
+                var acd = AllActors.FirstOrDefault(x => x._ACD.x090_ActorSnoId == Urshi_ActorSNO)._ACD;
+
+                if (acd != null)
+                {
+                    Urshi_Actor = acd;
                     return true;
                 }
 
@@ -201,6 +226,7 @@ namespace D3Helper.A_Handler.AutoCube
         {
             try
             {
+                RefreshMaterialsUI();
                 IEnumerable<UXControl> AllControls = UXHelper.Enumerate();                
 
                 int Count_RP = 0;
@@ -231,6 +257,7 @@ namespace D3Helper.A_Handler.AutoCube
         {
             try
             {
+                RefreshMaterialsUI();
                 IEnumerable<UXControl> AllControls = UXHelper.Enumerate();
 
                 int ConvertMaterialCost = 100;
@@ -264,8 +291,16 @@ namespace D3Helper.A_Handler.AutoCube
                 return 0;
             }
         }
-
-        private static void GetAllMaterialsUpgrade(IEnumerable<UXControl> AllControls, out int DBcount, out int RPcount, out int VCcount, out int ADcount)
+        private static void RefreshMaterialsUI()
+        {
+            A_Tools.InputSimulator.IS_Keyboard.Inventory();
+            Thread.Sleep(2*Properties.Settings.Default.MaxDelayClick);
+            A_Tools.T_D3UI.UIElement.leftClick(UIElements.Crafting_Mats_Button);
+            Thread.Sleep(Properties.Settings.Default.MaxDelayClick);
+            A_Tools.InputSimulator.IS_Keyboard.Close_AllWindows();
+            Thread.Sleep(Properties.Settings.Default.MaxDelayClick);
+        }
+            private static void GetAllMaterialsUpgrade(IEnumerable<UXControl> AllControls, out int DBcount, out int RPcount, out int VCcount, out int ADcount)
         {
             DBcount = 0;
             VCcount = 0;

@@ -22,6 +22,7 @@ namespace D3Helper.A_Handler.AutoCube
         public bool enabled { get { return Properties.Settings.Default.RosBotUpgradeKadalaBool; } }
         public bool kanaiVisible { get { return Tools.IsKanaisCube_MainPage_Visible(); } }        
         public bool isInTown { get { return A_Collection.Me.HeroStates.isInTown;  } }
+        public bool isInGame { get { return A_Collection.Me.HeroStates.isInGame; } }
 
         public RosBotUpgradeKadala()
         {
@@ -30,21 +31,25 @@ namespace D3Helper.A_Handler.AutoCube
             checkKadala = true;
             while (true)
             {
-                int sleepWait = 200;
-                if (!visitedKadala)
+                try
                 {
-                    sleepWait = 800;
+                    int sleepWait = 200;
+                    if (!visitedKadala)
+                    {
+                        sleepWait = 800;
+                    }
+                    else
+                    {
+                        sleepWait = 80;
+                    }
+                    if (!isInTown)
+                    {
+                        sleepWait = 6000;
+                    }
+                    checkUpgradeKadala();
+                    Thread.Sleep(sleepWait);
                 }
-                else
-                {
-                    sleepWait = 80;
-                }
-                if (!isInTown)
-                {
-                    sleepWait = 6000;
-                }
-                checkUpgradeKadala();
-                Thread.Sleep(sleepWait);
+                catch { }
             }
         }
 
@@ -52,7 +57,7 @@ namespace D3Helper.A_Handler.AutoCube
         {
             if (enabled)
             {
-                if (isInTown)
+                if (isInTown & isInGame)
                 {
                     if (checkKadala & kadalaVisible)
                     {

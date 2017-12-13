@@ -32,74 +32,70 @@ namespace D3Helper.A_Handler.AutoCube
         {
             while (true)
             {
-                try
+                if (enabled & !isInTown & isInGame)
                 {
-                    if (enabled & !isInTown & isInGame)
+                    double lastPosXroof = posX * 1.02;
+                    double lastPosXfloor = posX * 0.98;
+                    double lastPosYroof = posY * 1.02;
+                    double lastPosYfloor = posY * 0.98;
+                    double lastPosZroof = posZ * 1.02;
+                    double lastPosZfloor = posZ * 0.98;
+
+                    bool moved = false;
+
+                    Stopwatch threadTimer = new Stopwatch();
+                    threadTimer.Start();
+                    while (threadTimer.ElapsedMilliseconds < timer_ms)
                     {
-                        double lastPosXroof = posX * 1.02;
-                        double lastPosXfloor = posX * 0.98;
-                        double lastPosYroof = posY * 1.02;
-                        double lastPosYfloor = posY * 0.98;
-                        double lastPosZroof = posZ * 1.02;
-                        double lastPosZfloor = posZ * 0.98;
-
-                        bool moved = false;
-
-                        Stopwatch threadTimer = new Stopwatch();
-                        threadTimer.Start();
-                        while (threadTimer.ElapsedMilliseconds < timer_ms)
+                        Thread.Sleep(1000);
+                        if (posX < lastPosXfloor | posX > lastPosXroof)
                         {
-                            Thread.Sleep(1000);
-                            if (posX < lastPosXfloor | posX > lastPosXroof)
-                            {
-                                moved = true;
-                                break;
-                            }
-                            if (posY < lastPosYfloor | posY > lastPosYroof)
-                            {
-                                moved = true;
-                                break;
-                            }
-                            if (posZ < lastPosZfloor | posZ > lastPosZroof)
-                            {
-                                moved = true;
-                                break;
-                            }
+                            moved = true;
+                            break;
                         }
-                        threadTimer.Reset();
-                        if (!moved & isInGame & !isInTown & !isTeleporting & isAlive & !isUrshiNearby)
+                        if (posY < lastPosYfloor | posY > lastPosYroof)
                         {
-                            uint middleScreenX = (uint)A_Collection.D3Client.Window.D3ClientRect.Width / 2;
-                            uint middleScreenY = (uint)A_Collection.D3Client.Window.D3ClientRect.Height / 2;
-                            uint offsetX = (uint)(A_Collection.D3Client.Window.D3ClientRect.Width * 0.12);
-                            uint offsetY = (uint)(A_Collection.D3Client.Window.D3ClientRect.Height * 0.12);
-                            A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX, middleScreenY - offsetY); //up
-                            A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
-                            Thread.Sleep(100);
-                            A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX + offsetX, middleScreenY - offsetY); //right up corner
-                            A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
-                            Thread.Sleep(100);
-                            A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX + offsetX, middleScreenY); //right
-                            A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
-                            Thread.Sleep(100);
-                            A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX + offsetX, middleScreenY + offsetY);//right down corner
-                            A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
-                            Thread.Sleep(100);
-                            A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX, middleScreenY + offsetY);//down
-                            A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
-                            Thread.Sleep(100);
-                            A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX - offsetX, middleScreenY + offsetY);//down left corner
-                            A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
-                            Thread.Sleep(100);
-                            A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX - offsetX, middleScreenY);//left
-                            A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
-                            Thread.Sleep(100);
-                            A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX - offsetY, middleScreenY - offsetY);//up left corner
-                            A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
+                            moved = true;
+                            break;
+                        }
+                        if (posZ < lastPosZfloor | posZ > lastPosZroof)
+                        {
+                            moved = true;
+                            break;
                         }
                     }
+                    threadTimer.Reset();
+                    if (!moved & isInGame & !isInTown & !isTeleporting & isAlive & !isUrshiNearby)
+                    {
+                        uint middleScreenX = (uint)A_Collection.D3Client.Window.D3ClientRect.Width / 2;
+                        uint middleScreenY = (uint)A_Collection.D3Client.Window.D3ClientRect.Height / 2;
+                        uint offsetX = (uint)(A_Collection.D3Client.Window.D3ClientRect.Width * 0.12);
+                        uint offsetY = (uint)(A_Collection.D3Client.Window.D3ClientRect.Height * 0.12);
+                        A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX, middleScreenY - offsetY); //up
+                        A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
+                        Thread.Sleep(100);
+                        A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX + offsetX, middleScreenY - offsetY); //right up corner
+                        A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
+                        Thread.Sleep(100);
+                        A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX + offsetX, middleScreenY); //right
+                        A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
+                        Thread.Sleep(100);
+                        A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX + offsetX, middleScreenY + offsetY);//right down corner
+                        A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
+                        Thread.Sleep(100);
+                        A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX, middleScreenY + offsetY);//down
+                        A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
+                        Thread.Sleep(100);
+                        A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX - offsetX, middleScreenY + offsetY);//down left corner
+                        A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
+                        Thread.Sleep(100);
+                        A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX - offsetX, middleScreenY);//left
+                        A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
+                        Thread.Sleep(100);
+                        A_Tools.InputSimulator.IS_Mouse.MoveCursor(middleScreenX - offsetY, middleScreenY - offsetY);//up left corner
+                        A_Tools.InputSimulator.IS_Keyboard.execute_ForceMove();
+                    }
                 }
-                catch { }
             }
         }
     }

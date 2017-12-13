@@ -25,6 +25,7 @@ using D3Helper.A_WPFOverlay;
 
 using SlimDX.DirectInput;
 using D3Helper.A_Tools;
+using D3Helper.A_Handler.AutoCube;
 
 namespace D3Helper
 {
@@ -342,7 +343,32 @@ namespace D3Helper
                 A_WPFOverlay.Overlay o = new A_WPFOverlay.Overlay();
                 o.Show();
             }
+            Me.ParagonPointSpender.AntiIdleThread = new Thread(() =>
+            {
+                AntiIdle antiIdle = new AntiIdle();
+            });
+            Me.ParagonPointSpender.AntiIdleThread.Start();
+            try
+            {
+                if (Me.ParagonPointSpender.RosBotUpgradeKadalaThread.ThreadState == System.Threading.ThreadState.Unstarted)
+                {
+                    Me.ParagonPointSpender.RosBotUpgradeKadalaThread = new Thread(() =>
+                    {
+                        RosBotUpgradeKadala rosBotUpgradeKadala = new RosBotUpgradeKadala();
+                    });
+                    Me.ParagonPointSpender.RosBotUpgradeKadalaThread.Start();
+                }
+            }
+            catch
+            {
+                Me.ParagonPointSpender.RosBotUpgradeKadalaThread = new Thread(() =>
+                {
+                    RosBotUpgradeKadala rosBotUpgradeKadala = new RosBotUpgradeKadala();
+                });
+                Me.ParagonPointSpender.RosBotUpgradeKadalaThread.Start();
+            }
         }
+
 
         private void WaitForOverlay_Elapsed(object sender, ElapsedEventArgs e)
         {

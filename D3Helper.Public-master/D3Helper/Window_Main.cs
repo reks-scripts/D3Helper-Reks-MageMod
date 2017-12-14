@@ -343,30 +343,38 @@ namespace D3Helper
                 A_WPFOverlay.Overlay o = new A_WPFOverlay.Overlay();
                 o.Show();
             }
-            Me.ParagonPointSpender.AntiIdleThread = new Thread(() =>
+
+            Me.Threads.AntiIdleThread = new Thread(() =>
             {
                 AntiIdle antiIdle = new AntiIdle();
             });
-            Me.ParagonPointSpender.AntiIdleThread.Start();
+            Me.Threads.AntiIdleThread.Start();
+
             try
             {
-                if (Me.ParagonPointSpender.RosBotUpgradeKadalaThread.ThreadState == System.Threading.ThreadState.Unstarted)
+                if (Me.Threads.RosBotUpgradeKadalaThread.ThreadState == System.Threading.ThreadState.Unstarted)
                 {
-                    Me.ParagonPointSpender.RosBotUpgradeKadalaThread = new Thread(() =>
+                    Me.Threads.RosBotUpgradeKadalaThread = new Thread(() =>
                     {
                         RosBotUpgradeKadala rosBotUpgradeKadala = new RosBotUpgradeKadala();
                     });
-                    Me.ParagonPointSpender.RosBotUpgradeKadalaThread.Start();
+                    Me.Threads.RosBotUpgradeKadalaThread.Start();
                 }
             }
             catch
             {
-                Me.ParagonPointSpender.RosBotUpgradeKadalaThread = new Thread(() =>
+                Me.Threads.RosBotUpgradeKadalaThread = new Thread(() =>
                 {
                     RosBotUpgradeKadala rosBotUpgradeKadala = new RosBotUpgradeKadala();
                 });
-                Me.ParagonPointSpender.RosBotUpgradeKadalaThread.Start();
+                Me.Threads.RosBotUpgradeKadalaThread.Start();
             }
+
+            Me.Threads.HomingPadsThread = new Thread(() =>
+            {
+                HomingPadsHandler homingPads = new HomingPadsHandler();
+            });
+            Me.Threads.HomingPadsThread.Start();
         }
 
 

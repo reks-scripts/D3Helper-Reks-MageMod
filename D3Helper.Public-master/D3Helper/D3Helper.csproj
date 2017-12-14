@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>D3Helper</RootNamespace>
     <AssemblyName>D3Helper</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>D:\D3Helper\</PublishUrl>
@@ -28,6 +28,7 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -100,6 +101,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xaml" />
@@ -153,6 +155,7 @@
     <Compile Include="A_Handler\AutoPick\AutoPick.cs" />
     <Compile Include="A_Handler\EventHandler\EventHandler.cs" />
     <Compile Include="A_Handler\HealthPotion\HealthPotion.cs" />
+    <Compile Include="A_Handler\HomingPadsHandler\HomingPadsHandler.cs" />
     <Compile Include="A_Handler\Log\Exception.cs" />
     <Compile Include="A_Handler\ParagonPointSpender\ParagonPointSpender.cs" />
     <Compile Include="A_Handler\SkillHandler\Aggregator_CastConditions.cs" />
@@ -162,6 +165,7 @@
     <Compile Include="A_Initialize\Th_ICollector.cs" />
     <Compile Include="A_TCPClient\TCPClient.cs" />
     <Compile Include="A_Tools\Buffs\Buffs.cs" />
+    <Compile Include="A_Tools\FileSystemWatcher\BlockDelayAndHandleFileLock.cs" />
     <Compile Include="A_Tools\InputSimulator\IS_Keyboard.cs" />
     <Compile Include="A_Tools\InputSimulator\IS_Mouse.cs" />
     <Compile Include="A_Tools\Skills\Skills.cs" />
@@ -1075,6 +1079,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

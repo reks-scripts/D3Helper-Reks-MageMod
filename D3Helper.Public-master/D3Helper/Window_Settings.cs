@@ -152,6 +152,8 @@ namespace D3Helper
             this.AntiIdle.Checked = Properties.Settings.Default.AntiIdleBool;
             this.AntiIdle_Timer.Text = Properties.Settings.Default.AntiIdle_Timer.ToString();
 
+            this.HomingPads.Checked = Properties.Settings.Default.HomingPadsBool;
+
             this.ShowItemQuality.Checked = Properties.Settings.Default.ShowItemQualityBool;
 
 
@@ -1266,6 +1268,12 @@ namespace D3Helper
         private void AntiIdle_Timer_TextChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.AntiIdle_Timer= int.Parse(this.AntiIdle_Timer.Text);
+            Properties.Settings.Default.Save();
+        }
+
+        private void HomingPads_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.HomingPadsBool = this.HomingPads.Checked;
             Properties.Settings.Default.Save();
         }
 

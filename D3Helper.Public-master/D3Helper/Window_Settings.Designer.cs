@@ -84,6 +84,7 @@
             this.bt_delete_hotkey_skillslot2 = new System.Windows.Forms.Button();
             this.bt_delete_hotkey_skillslot1 = new System.Windows.Forms.Button();
             this.page_Overlay = new System.Windows.Forms.TabPage();
+            this.ShowItemQuality = new System.Windows.Forms.CheckBox();
             this.listBox_ui_elements = new System.Windows.Forms.ListBox();
             this.button_get_ui_elements = new System.Windows.Forms.Button();
             this.textBox_filter_ui_elemets_listbox = new System.Windows.Forms.TextBox();
@@ -136,7 +137,7 @@
             this.button_simplecast_remove = new System.Windows.Forms.Button();
             this.button_simplecast_add = new System.Windows.Forms.Button();
             this.dataGridView_simpleCast = new System.Windows.Forms.DataGridView();
-            this.ShowItemQuality = new System.Windows.Forms.CheckBox();
+            this.HomingPads = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.page_General.SuspendLayout();
             this.page_Hotkeys.SuspendLayout();
@@ -743,6 +744,18 @@
             this.page_Overlay.TabIndex = 1;
             this.page_Overlay.Text = "Overlay";
             // 
+            // ShowItemQuality
+            // 
+            this.ShowItemQuality.AutoSize = true;
+            this.ShowItemQuality.BackColor = System.Drawing.Color.Transparent;
+            this.ShowItemQuality.Location = new System.Drawing.Point(6, 181);
+            this.ShowItemQuality.Name = "ShowItemQuality";
+            this.ShowItemQuality.Size = new System.Drawing.Size(190, 17);
+            this.ShowItemQuality.TabIndex = 44;
+            this.ShowItemQuality.Text = "Show Item Quality (Ancient, Primal)";
+            this.ShowItemQuality.UseVisualStyleBackColor = false;
+            this.ShowItemQuality.CheckedChanged += new System.EventHandler(this.ShowItemQuality_CheckedChanged);
+            // 
             // listBox_ui_elements
             // 
             this.listBox_ui_elements.FormattingEnabled = true;
@@ -892,6 +905,7 @@
             this.page_Auto.BackColor = System.Drawing.SystemColors.Control;
             this.page_Auto.BackgroundImage = global::D3Helper.Properties.Resources.Background_Monk_50_Settings;
             this.page_Auto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.page_Auto.Controls.Add(this.HomingPads);
             this.page_Auto.Controls.Add(this.cb_autogamble);
             this.page_Auto.Controls.Add(this.tb_autopotionhpvalue);
             this.page_Auto.Controls.Add(this.cb_autopotion);
@@ -1325,17 +1339,20 @@
             this.dataGridView_simpleCast.TabIndex = 0;
             this.dataGridView_simpleCast.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_simpleCast_CellContentClick);
             // 
-            // ShowItemQuality
+            // HomingPads
             // 
-            this.ShowItemQuality.AutoSize = true;
-            this.ShowItemQuality.BackColor = System.Drawing.Color.Transparent;
-            this.ShowItemQuality.Location = new System.Drawing.Point(6, 181);
-            this.ShowItemQuality.Name = "ShowItemQuality";
-            this.ShowItemQuality.Size = new System.Drawing.Size(190, 17);
-            this.ShowItemQuality.TabIndex = 44;
-            this.ShowItemQuality.Text = "Show Item Quality (Ancient, Primal)";
-            this.ShowItemQuality.UseVisualStyleBackColor = false;
-            this.ShowItemQuality.CheckedChanged += new System.EventHandler(this.ShowItemQuality_CheckedChanged);
+            this.HomingPads.AutoSize = true;
+            this.HomingPads.BackColor = System.Drawing.Color.Transparent;
+            this.HomingPads.Location = new System.Drawing.Point(7, 60);
+            this.HomingPads.Name = "HomingPads";
+            this.HomingPads.Size = new System.Drawing.Size(218, 17);
+            this.HomingPads.TabIndex = 42;
+            this.HomingPads.Text = "Homing Pads Equipped (ROS-BOT Only)";
+            this.toolTip1.SetToolTip(this.HomingPads, "ROS-BOT ONLY:  enable if character has Homing Pads equipped.  D3Helper will detec" +
+        "t when the RG is dead, pause the bot and teleport home.  Only works in regular r" +
+        "ifts.");
+            this.HomingPads.UseVisualStyleBackColor = false;
+            this.HomingPads.CheckedChanged += new System.EventHandler(this.HomingPads_CheckedChanged);
             // 
             // Window_Settings
             // 
@@ -1481,5 +1498,6 @@
         private System.Windows.Forms.TextBox AntiIdle_Timer;
         private System.Windows.Forms.CheckBox AntiIdle;
         private System.Windows.Forms.CheckBox ShowItemQuality;
+        private System.Windows.Forms.CheckBox HomingPads;
     }
 }

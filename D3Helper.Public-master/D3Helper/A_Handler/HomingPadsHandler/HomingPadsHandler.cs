@@ -9,21 +9,53 @@ using Enigma.D3;
 using Enigma.D3.UI;
 using D3Helper.A_Enums;
 using D3Helper.A_Collector;
+using D3Helper.A_Tools.FileSystemWatcherMemoryCache;
 using SlimDX.DirectInput;
 
 namespace D3Helper.A_Handler.AutoCube
 {
     class HomingPadsHandler
     {
-        public bool enabled { get { return Properties.Settings.Default.HomingPadsBool; } }
-        public bool isInGame { get { return A_Collection.Me.HeroStates.isInGame; } }
-        public bool isInRift { get { return A_Tools.T_LevelArea.IsRift(); } }
+        private LogFileHandler _Watcher;
+
+
+        public bool HomingPadsEquipped
+        {
+            get
+            {
+                return Properties.Settings.Default.HomingPadsBool;
+            }
+        }
+
+        public bool IsInGame
+        {
+            get
+            {
+                return A_Collection.Me.HeroStates.isInGame;
+            }
+        }
+
+        public bool IsInRift
+        {
+            get
+            {
+                return A_Tools.T_LevelArea.IsRift();
+            }
+        }
+
+        public bool IsTeleporting
+        {
+            get
+            {
+                return A_Collection.Me.HeroStates.isTeleporting;
+            }
+        }
 
         public HomingPadsHandler()
         {
             while (true)
             {
-                if (enabled && isInGame && isInRift)
+                if (HomingPadsEquipped && IsInGame && IsInRift && !IsTeleporting)
                 {
                     checkRosLogFile();
                 }

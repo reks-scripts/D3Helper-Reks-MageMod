@@ -8,7 +8,7 @@ namespace D3Helper.A_Tools.FileSystemWatcherMemoryCache
     /// AddOrGetExisting a file event to MemoryCache, to block/swallow multiple events
     /// Actually 'handle' event inside callback for removal from cache on event expiring
     /// </summary>
-    internal class BlockDelayAndHandle
+    internal class LogFileHandler
     {
         private readonly MemoryCache _memCache;
         private readonly CacheItemPolicy _cacheItemPolicy;
@@ -23,7 +23,7 @@ namespace D3Helper.A_Tools.FileSystemWatcherMemoryCache
         }
 
         // Setup a FileSystemWatcher and cache item policy shared settings
-        public BlockDelayAndHandle()
+        public LogFileHandler()
         {
             _memCache = MemoryCache.Default;
 

@@ -42,6 +42,7 @@
             this.tb_autopotionhpvalue = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.HomingPads = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tb_assignedSkillRMB = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -137,7 +138,8 @@
             this.button_simplecast_remove = new System.Windows.Forms.Button();
             this.button_simplecast_add = new System.Windows.Forms.Button();
             this.dataGridView_simpleCast = new System.Windows.Forms.DataGridView();
-            this.HomingPads = new System.Windows.Forms.CheckBox();
+            this.HomingPadsDelay = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.page_General.SuspendLayout();
             this.page_Hotkeys.SuspendLayout();
@@ -248,6 +250,21 @@
             this.label7.Size = new System.Drawing.Size(15, 13);
             this.label7.TabIndex = 21;
             this.label7.Text = "%";
+            // 
+            // HomingPads
+            // 
+            this.HomingPads.AutoSize = true;
+            this.HomingPads.BackColor = System.Drawing.Color.Transparent;
+            this.HomingPads.Location = new System.Drawing.Point(7, 60);
+            this.HomingPads.Name = "HomingPads";
+            this.HomingPads.Size = new System.Drawing.Size(137, 17);
+            this.HomingPads.TabIndex = 42;
+            this.HomingPads.Text = "Homing Pads Equipped";
+            this.toolTip1.SetToolTip(this.HomingPads, "ROS-BOT ONLY:  enable if character has Homing Pads equipped.  D3Helper will detec" +
+        "t when the RG is dead, pause the bot and teleport home.  Only works in regular r" +
+        "ifts.");
+            this.HomingPads.UseVisualStyleBackColor = false;
+            this.HomingPads.CheckedChanged += new System.EventHandler(this.HomingPads_CheckedChanged);
             // 
             // label13
             // 
@@ -905,6 +922,8 @@
             this.page_Auto.BackColor = System.Drawing.SystemColors.Control;
             this.page_Auto.BackgroundImage = global::D3Helper.Properties.Resources.Background_Monk_50_Settings;
             this.page_Auto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.page_Auto.Controls.Add(this.label8);
+            this.page_Auto.Controls.Add(this.HomingPadsDelay);
             this.page_Auto.Controls.Add(this.HomingPads);
             this.page_Auto.Controls.Add(this.cb_autogamble);
             this.page_Auto.Controls.Add(this.tb_autopotionhpvalue);
@@ -1339,20 +1358,24 @@
             this.dataGridView_simpleCast.TabIndex = 0;
             this.dataGridView_simpleCast.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_simpleCast_CellContentClick);
             // 
-            // HomingPads
+            // HomingPadsDelay
             // 
-            this.HomingPads.AutoSize = true;
-            this.HomingPads.BackColor = System.Drawing.Color.Transparent;
-            this.HomingPads.Location = new System.Drawing.Point(7, 60);
-            this.HomingPads.Name = "HomingPads";
-            this.HomingPads.Size = new System.Drawing.Size(218, 17);
-            this.HomingPads.TabIndex = 42;
-            this.HomingPads.Text = "Homing Pads Equipped (ROS-BOT Only)";
-            this.toolTip1.SetToolTip(this.HomingPads, "ROS-BOT ONLY:  enable if character has Homing Pads equipped.  D3Helper will detec" +
-        "t when the RG is dead, pause the bot and teleport home.  Only works in regular r" +
-        "ifts.");
-            this.HomingPads.UseVisualStyleBackColor = false;
-            this.HomingPads.CheckedChanged += new System.EventHandler(this.HomingPads_CheckedChanged);
+            this.HomingPadsDelay.Location = new System.Drawing.Point(195, 57);
+            this.HomingPadsDelay.Name = "HomingPadsDelay";
+            this.HomingPadsDelay.Size = new System.Drawing.Size(40, 20);
+            this.HomingPadsDelay.TabIndex = 43;
+            this.toolTip1.SetToolTip(this.HomingPadsDelay, "How many seconds to wait after the RG is dead before using town portal.");
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Location = new System.Drawing.Point(241, 61);
+            this.label8.Name = "label8";
+            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label8.Size = new System.Drawing.Size(20, 13);
+            this.label8.TabIndex = 44;
+            this.label8.Text = "ms";
             // 
             // Window_Settings
             // 
@@ -1499,5 +1522,7 @@
         private System.Windows.Forms.CheckBox AntiIdle;
         private System.Windows.Forms.CheckBox ShowItemQuality;
         private System.Windows.Forms.CheckBox HomingPads;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox HomingPadsDelay;
     }
 }

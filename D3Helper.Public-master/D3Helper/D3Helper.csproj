@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>D3Helper</RootNamespace>
     <AssemblyName>D3Helper</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>D:\D3Helper\</PublishUrl>
@@ -165,7 +165,7 @@
     <Compile Include="A_Initialize\Th_ICollector.cs" />
     <Compile Include="A_TCPClient\TCPClient.cs" />
     <Compile Include="A_Tools\Buffs\Buffs.cs" />
-    <Compile Include="A_Tools\FileSystemWatcher\LogFileHandler.cs" />
+    <Compile Include="A_Tools\FileSystemWatcher\LogFile.cs" />
     <Compile Include="A_Tools\InputSimulator\IS_Keyboard.cs" />
     <Compile Include="A_Tools\InputSimulator\IS_Mouse.cs" />
     <Compile Include="A_Tools\Skills\Skills.cs" />

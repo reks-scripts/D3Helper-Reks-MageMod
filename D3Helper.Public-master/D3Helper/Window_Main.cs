@@ -19,6 +19,8 @@ using System.Reflection;
 using Enigma.D3;
 using Enigma.Memory;
 using D3Helper.A_Collection;
+using D3Helper.A_Tools.FileSystemWatcher;
+using D3Helper.A_Handler.HomingPads;
 using D3Helper;
 using D3Helper.A_WPFOverlay;
 
@@ -372,7 +374,7 @@ namespace D3Helper
 
             Me.Threads.HomingPadsThread = new Thread(() =>
             {
-                HomingPadsHandler homingPads = new HomingPadsHandler();
+                HomingPadsHandler homingPadsHandler = new HomingPadsHandler();
             });
             Me.Threads.HomingPadsThread.Start();
         }

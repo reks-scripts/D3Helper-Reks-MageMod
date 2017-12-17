@@ -350,7 +350,10 @@ namespace D3Helper
             {
                 AntiIdle antiIdle = new AntiIdle();
             });
-            Me.Threads.AntiIdleThread.Start();
+            if (Properties.Settings.Default.AntiIdleBool)
+            {
+                Me.Threads.AntiIdleThread.Start();
+            }
 
             try
             {
@@ -360,7 +363,10 @@ namespace D3Helper
                     {
                         RosBotUpgradeKadala rosBotUpgradeKadala = new RosBotUpgradeKadala();
                     });
-                    Me.Threads.RosBotUpgradeKadalaThread.Start();
+                    if (Properties.Settings.Default.RosBotUpgradeKadalaBool)
+                    {
+                        Me.Threads.RosBotUpgradeKadalaThread.Start();
+                    }
                 }
             }
             catch
@@ -369,14 +375,22 @@ namespace D3Helper
                 {
                     RosBotUpgradeKadala rosBotUpgradeKadala = new RosBotUpgradeKadala();
                 });
-                Me.Threads.RosBotUpgradeKadalaThread.Start();
+                if (Properties.Settings.Default.RosBotUpgradeKadalaBool)
+                {
+                    Me.Threads.RosBotUpgradeKadalaThread.Start();
+                }
             }
 
             Me.Threads.HomingPadsThread = new Thread(() =>
             {
                 HomingPadsHandler homingPadsHandler = new HomingPadsHandler();
             });
-            Me.Threads.HomingPadsThread.Start();
+            // Probably best to not start this thread unless user has it turned on in settings
+            // Will require a restart of D3helper any time it's turned on/off though
+            if (Properties.Settings.Default.HomingPadsBool)
+            {
+                Me.Threads.HomingPadsThread.Start();
+            }
         }
 
 

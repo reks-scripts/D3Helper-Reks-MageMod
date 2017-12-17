@@ -1364,7 +1364,8 @@
             this.HomingPadsDelay.Name = "HomingPadsDelay";
             this.HomingPadsDelay.Size = new System.Drawing.Size(40, 20);
             this.HomingPadsDelay.TabIndex = 43;
-            this.toolTip1.SetToolTip(this.HomingPadsDelay, "How many seconds to wait after the RG is dead before using town portal.");
+            this.HomingPadsDelay.TextChanged += new System.EventHandler(this.HomingPadsDelay_TextChanged);
+            this.toolTip1.SetToolTip(this.HomingPadsDelay, "How many milliseconds to wait after the RG is dead before using town portal.");
             // 
             // label8
             // 

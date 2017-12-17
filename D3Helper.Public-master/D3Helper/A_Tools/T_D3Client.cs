@@ -14,7 +14,7 @@ namespace D3Helper.A_Tools
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern IntPtr GetForegroundWindow();
 
-        private static IntPtr GetDiabloWindowHandle()
+        public static IntPtr GetDiabloWindowHandle()
         {
             try
             {

@@ -166,6 +166,7 @@
     <Compile Include="A_TCPClient\TCPClient.cs" />
     <Compile Include="A_Tools\Buffs\Buffs.cs" />
     <Compile Include="A_Tools\FileSystemWatcher\LogFile.cs" />
+    <Compile Include="A_Tools\FileSystemWatcher\Win32Processes.cs" />
     <Compile Include="A_Tools\InputSimulator\IS_Keyboard.cs" />
     <Compile Include="A_Tools\InputSimulator\IS_Mouse.cs" />
     <Compile Include="A_Tools\Skills\Skills.cs" />

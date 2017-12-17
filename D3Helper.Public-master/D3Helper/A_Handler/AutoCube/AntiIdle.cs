@@ -32,6 +32,8 @@ namespace D3Helper.A_Handler.AutoCube
         {
             while (true)
             {
+                Thread.Sleep(50); //reduce cpu usage
+
                 if (enabled & !isInTown & isInGame)
                 {
                     double lastPosXroof = posX * 1.02;
